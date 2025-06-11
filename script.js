@@ -564,4 +564,45 @@ document.addEventListener('DOMContentLoaded', function() {
     document.body.insertBefore(skipLink, document.body.firstChild);
 });
 
+// Advanced Features Toggle
+document.addEventListener('DOMContentLoaded', function() {
+    const toggleButton = document.getElementById('toggleAdvancedFeatures');
+    const advancedFeatures = document.getElementById('advancedFeatures');
+    
+    if (toggleButton && advancedFeatures) {
+        toggleButton.addEventListener('click', function() {
+            const isShown = advancedFeatures.classList.contains('show');
+            
+            if (isShown) {
+                // Hide advanced features
+                advancedFeatures.classList.remove('show');
+                toggleButton.innerHTML = '<i class="fas fa-plus"></i><span>Odkryj Zaawansowane Funkcjonalności AI</span>';
+                toggleButton.classList.remove('active');
+                
+                // Smooth scroll to button
+                setTimeout(() => {
+                    toggleButton.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'center' 
+                    });
+                }, 300);
+            } else {
+                // Show advanced features
+                advancedFeatures.classList.add('show');
+                toggleButton.innerHTML = '<i class="fas fa-minus"></i><span>Ukryj Zaawansowane Funkcjonalności</span>';
+                toggleButton.classList.add('active');
+                
+                // Smooth scroll to advanced features
+                setTimeout(() => {
+                    advancedFeatures.scrollIntoView({ 
+                        behavior: 'smooth', 
+                        block: 'start',
+                        inline: 'nearest'
+                    });
+                }, 100);
+            }
+        });
+    }
+});
+
 console.log('🎤 VoiceFlow AI - Landing Page Loaded Successfully!'); 
